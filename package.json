@@ -1,22 +1,56 @@
 {
   "name": "commander.io",
-  "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "author": "Justin Kaseman",
+  "license": "ISC",
+  "version": "1.0.0",
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jkasem/commander.io.git"
+    },
+  "bugs": {
+    "url": "https://github.com/Jkasem/commander.io/issues"
+  },
+  "homepage": "https://github.com/Jkasem/commander.io#readme",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "babel-node src",
+    "test": "eslint src && flow && jest --coverage"
   },
   "engines": {
     "node": ">=10.10.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Jkasem/commander.io.git"
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test"
+    }
   },
-  "author": "Justin Kaseman",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Jkasem/commander.io/issues"
-  },
-  "homepage": "https://github.com/Jkasem/commander.io#readme"
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.2",
+    "babel-plugin-flow-react-proptypes": "^24.1.2",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-import-resolver-babel-module": "^5.0.0-beta.1",
+    "eslint-plugin-flowtype": "^2.50.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.11.1",
+    "flow-bin": "^0.81.0",
+    "husky": "^1.0.0-rc.15",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.4",
+    "prettier": "^1.14.3",
+    "prop-types": "^15.6.2"
+  }
 }
