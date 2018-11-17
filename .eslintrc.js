@@ -24,4 +24,7 @@ module.exports = {
     'import/no-unresolved': 0,
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx'] }],
   },
+  settings: {
+    polyfills: ['fetch'],
+  },
 }

@@ -43,6 +43,7 @@
     "compression": "^1.7.3",
     "express": "^4.16.4",
     "ioredis": "^2.4.3",
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.10",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -50,6 +51,7 @@
     "react-redux": "^5.1.1",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
+    "redux-thunk": "^2.3.0",
     "socket.io": "^1.7.2"
   },
   "devDependencies": {
