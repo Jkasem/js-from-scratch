@@ -9,19 +9,19 @@ import {
 
 const initialState = {
   message: 'Initial reducer message',
-  messageAsync: 'Initial async reducer message',
+  messageAsync: 'Initial reducer message for async call',
 }
 
 const helloReducer = (state: Object = initialState, action: { type: string, payload: any }) => {
   switch (action.type) {
     case SAY_HELLO:
-      return state.set('message', action.payload)
+      return { ...state, message: action.payload }
     case SAY_HELLO_ASYNC_REQUEST:
-      return state.set('messageAsync', 'Loading...')
+      return { ...state, messageAsync: 'Loading...' }
     case SAY_HELLO_ASYNC_SUCCESS:
-      return state.set('messageAsync', action.payload)
+      return { ...state, messageAsync: action.payload }
     case SAY_HELLO_ASYNC_FAILURE:
-      return state.set('messageAsync', 'No message received, please check your connection')
+      return { ...state, messageAsync: 'No message received, please check your connection' }
     default:
       return state
   }
