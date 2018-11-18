@@ -3,23 +3,27 @@
 import 'babel-polyfill'
 
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { hydrate } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { BrowserRouter } from 'react-router-dom'
 
-import App from './app'
-import helloReducer from './reducer/hello'
+import app from '../shared/app'
+import helloReducer from '../shared/reducer/hello'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
-// eslint-disable-next-line no-underscore-dangle
+/* eslint-disable no-underscore-dangle */
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+const preloadedState = window.__PRELOADED_STATE__
+/* eslint-enable no-underscore-dangle */
+delete window.__PRELOADED_STATE__
 
 const store = createStore(
   combineReducers({ hello: helloReducer }),
+  { hello: preloadedState.hello },
   composeEnhancers(applyMiddleware(thunkMiddleware)),
 )
 
@@ -38,13 +42,13 @@ const wrapApp = (AppComponent, reduxStore) => (
   </Provider>
 )
 
-ReactDOM.render(wrapApp(App, store), rootEl)
+hydrate(wrapApp(app, store), rootEl)
 
 // flow-disable-next-line
 if (module.hot) {
-  module.hot.accept('./app', () => {
+  module.hot.accept('../shared/app', () => {
     // eslint-disable-next-line global-require
-    const NextApp = require('./app').default
-    ReactDOM.render(wrapApp(NextApp), rootEl)
+    const NextApp = require('../shared/app').default
+    hydrate(wrapApp(NextApp), rootEl)
   })
 }
