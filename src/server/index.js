@@ -1,9 +1,9 @@
 import { WEB_PORT } from '../shared/config'
 import { isProd } from '../shared/util'
 
-const app = require('./app')
+const http = require('./app')
 
-app.listen(WEB_PORT, () => {
+http.listen(WEB_PORT, () => {
   // eslint-disable-next-line no-console
   console.log(
     `Server running on port ${WEB_PORT} ${
